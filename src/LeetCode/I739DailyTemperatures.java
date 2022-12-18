@@ -12,7 +12,7 @@ package LeetCode;
 
 import java.util.Arrays;
 
-public class l739DailyTemperatures {
+public class I739DailyTemperatures {
     public static void main(String[] args) {
 
         int[] temp = new int[]{73,74,75,71,69,72,76,73}; //Output: [1,1,4,2,1,1,0,0]
@@ -23,36 +23,52 @@ public class l739DailyTemperatures {
         System.out.println(Arrays.toString(dailyTemperatures(temp)));
     }
 
-    public static int[] dailyTemperatures1(int[] temperatures) {
+//    public static int[] dailyTemperatures(int[] temperatures) {
+//        int[] result = new int[temperatures.length];
+//
+//        for (int i = 0; i < temperatures.length; i++) {
+//            for (int j = i + 1; j < temperatures.length; j++) {
+//                if(temperatures[i] < temperatures[j]) {
+//                    result[i] = j - i;
+//                    break;
+//                }
+//            }
+//        }
+//        return result;
+//    }
+//}
+//Time Limit Exceeded
+
+//    public static int[] dailyTemperatures(int[] temperatures) {
+//        int[] result = new int[temperatures.length];
+//
+//        for (int i = temperatures.length - 2; i >= 0; i--) {
+//            int j = i + 1;
+//            while (temperatures[i] >= temperatures[j] && result[j] != 0) {
+//                j += result[j];
+//            }
+//            if (temperatures[i] < temperatures[j]) {
+//                result[i] = j - i;
+//            }
+//        }
+//        return result;
+//    }
+//}
+//Runtime: 12 ms, faster than 96.89% of Java online submissions for Daily Temperatures.
+//https://leetcode.com/problems/daily-temperatures/discuss/1574831/Java-2-Simple-Approaches-or-Constant-space-or-Stack-or-Beats-100-or-TC%3A-O(N)-SC%3A-O(1)
+
+    public static int[] dailyTemperatures(int[] temperatures) {
         int[] result = new int[temperatures.length];
 
-        for (int i = 0; i < temperatures.length; i++) {
-            for (int j = i + 1; j < temperatures.length; j++) {
-                if(temperatures[i] < temperatures[j]) {
-                    result[i] = j - i;
+        for (int i = temperatures.length -1; i >= 0 ; i--) {
+            for (int j = i-1; j >= 0; j--) {
+                if (temperatures[j] < temperatures[i]) {
+                    result[j] = i - j;
                     break;
                 }
             }
         }
         return result;
     }
-//}
-//Time Limit Exceeded
-
-    public static int[] dailyTemperatures(int[] temperatures) {
-        int[] result = new int[temperatures.length];
-
-        for (int i = temperatures.length - 2; i >= 0; i--) {
-            int j = i + 1;
-            while (temperatures[i] >= temperatures[j] && result[j] != 0) {
-                j += result[j];
-            }
-            if (temperatures[i] < temperatures[j]) {
-                result[i] = j - i;
-            }
-        }
-        return result;
-    }
 }
-//Runtime: 12 ms, faster than 96.89% of Java online submissions for Daily Temperatures.
-//https://leetcode.com/problems/daily-temperatures/discuss/1574831/Java-2-Simple-Approaches-or-Constant-space-or-Stack-or-Beats-100-or-TC%3A-O(N)-SC%3A-O(1)
+//Time Limit Exceeded
