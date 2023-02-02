@@ -1,4 +1,4 @@
-package LeetCode.NoSolution;
+package LeetCode;
 
 //Medium
 
@@ -12,7 +12,6 @@ package LeetCode.NoSolution;
 //Вы должны решить эту проблему, не используя библиотечную функцию сортировки.
 //Дополнение: не могли бы вы придумать однопроходный алгоритм, использующий только постоянное дополнительное пространство?
 
-import java.util.ArrayList;
 import java.util.Arrays;
 
 public class I75SortColors {
@@ -24,22 +23,17 @@ public class I75SortColors {
         sortColors(nums);
     }
 
-//    public static void sortColors(int[] nums) {
-//        for (int i = 0; i < nums.length-1; i++) {
-//            for (int j = 0; j < nums.length-1; j++) {
-//                if (nums[j] >= nums[j+1]) {
-//                    int interval = nums[j];
-//                    nums[j] = nums[j+1];
-//                    nums[j+1] = interval;
-//                }
-//            }
-//        }
-//    System.out.println(Arrays.toString(nums));
-//    }
-//}
-//Runtime: 2 ms, faster than 15.40% of Java online submissions for Sort Colors.
-
     public static void sortColors(int[] nums) {
-
+        for (int i = 0; i < nums.length-1; i++) {
+            for (int j = 0; j < nums.length-1; j++) {
+                if (nums[j] >= nums[j+1]) {
+                    int interval = nums[j];
+                    nums[j] = nums[j+1];
+                    nums[j+1] = interval;
+                }
+            }
+        }
+    System.out.println(Arrays.toString(nums));
     }
 }
+//Runtime: 2 ms, faster than 15.40% of Java online submissions for Sort Colors.
