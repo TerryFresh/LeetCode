@@ -4,9 +4,11 @@ package LeetCode.Help;
 public class Fibonachi {
     public static void main(String[] args) {
 
+        //totalMemory() - Возвращает общий объем памяти виртуальной машины Java. freeMemory() - Возвращает количество свободной памяти в виртуальной машине Java.
+        long usedBytes = Runtime.getRuntime().totalMemory()- Runtime.getRuntime().freeMemory();
         long m = System.currentTimeMillis();
 
-        long input = 71;
+        long input = 31;
         long result = 0;
         long first = 0;
         long second = 1;
@@ -16,13 +18,17 @@ public class Fibonachi {
             second = result;
         }
         System.out.println(result);
-        System.out.println((double) (System.currentTimeMillis() - m));
+        System.out.println((double) (System.currentTimeMillis() - m) + " Ms");
+
 
         System.out.println(fibo(input));
-        System.out.println((double) (System.currentTimeMillis() - m));
+        System.out.println((double) (System.currentTimeMillis() - m) + " Ms");
+        System.out.println((Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory()) / 1048576 + "MB");
 
-//        System.out.println(fibonachi(input));
-//        System.out.println((double) (System.currentTimeMillis() - m));
+        System.out.println(fibonachi(input));
+        System.out.println((double) (System.currentTimeMillis() - m) + " Ms");
+
+
     }
 
     public static long fibo(long number){
